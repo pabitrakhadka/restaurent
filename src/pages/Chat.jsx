@@ -1,8 +1,5 @@
 import server from '@/axois/server'
-import ChatFront from '@/components/ChatFront'
-import ChatHeader from '@/components/ChatHeader'
 import ChatTop from '@/components/ChatTop'
-import Layout from '@/components/Layout'
 import Messages from '@/components/Messages'
 import SendMessage from '@/components/SendMessage'
 import { useSession } from 'next-auth/react'
