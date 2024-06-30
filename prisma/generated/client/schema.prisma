@@ -1,0 +1,123 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model SuperAdmin {
+  id         Int      @id @default(autoincrement())
+  name       String
+  email      String   @unique
+  password   String
+  created_at DateTime @default(now())
+  image      String?
+}
+
+model admin {
+  id         Int       @id @default(autoincrement())
+  name       String
+  email      String    @unique(map: "Admin_email_key")
+  phone      String
+  password   String
+  created_at DateTime  @default(now())
+  token      String?
+  image      String?
+  messages   Message[]
+}
+
+model cart {
+  id       Int     @id @default(autoincrement())
+  user_id  Int
+  p_id     Int
+  quantity Int     @default(1)
+  product  product @relation(fields: [p_id], references: [id], map: "Cart_p_id_fkey")
+  user     user    @relation(fields: [user_id], references: [user_id], map: "Cart_user_id_fkey")
+
+  @@index([p_id], map: "Cart_p_id_fkey")
+  @@index([user_id], map: "Cart_user_id_fkey")
+}
+
+model contact {
+  id      Int    @id @default(autoincrement())
+  name    String
+  email   String
+  subject String
+  message String
+}
+
+model order {
+  id        Int      @id @default(autoincrement())
+  menu_id   Int
+  user_id   Int
+  price     String
+  quantity  String
+  status    String
+  token_num String
+  date      DateTime @default(now())
+  product   product  @relation(fields: [menu_id], references: [id], map: "Order_menu_id_fkey")
+  user      user     @relation(fields: [user_id], references: [user_id], map: "Order_user_id_fkey")
+
+  @@index([menu_id], map: "Order_menu_id_fkey")
+  @@index([user_id], map: "Order_user_id_fkey")
+}
+
+// model orderuserdata {
+//   id      Int      @id @default(autoincrement())
+//   user_id Int
+//   name    String
+//   address String
+//   phone   String
+//   email   String
+//   date    DateTime @default(now())
+//   user    user     @relation(fields: [user_id], references: [user_id], map: "OrderUserData_user_id_fkey")
+//   @@index([user_id], map: "OrderUserData_user_id_fkey")
+// }
+
+model product {
+  id          Int     @id @default(autoincrement())
+  name        String
+  price       Int
+  description String
+  image       String
+  category    String
+  special     String
+  cart        cart[]
+  order       order[]
+}
+
+model user {
+  user_id       Int     @id @default(autoincrement())
+  user_name     String?
+  user_phone    String?
+  user_address  String?
+  user_email    String  @unique(map: "User_user_email_key")
+  user_password String?
+  location      String?
+  user_token    String?
+  user_otp      String?
+  carts         cart[]
+  orders        order[]
+
+  Message Message[]
+}
+
+model SliderImage {
+  id    Int    @id @default(autoincrement())
+  image String
+}
+
+model Message {
+  id         Int      @id @default(autoincrement())
+  message    String
+  senderId   Int
+  receiverId Int
+  createdAt  DateTime @default(now())
+  adminId    Int
+  userid     Int
+  user       user     @relation(fields: [userid], references: [user_id])
+  admin      admin    @relation(fields: [adminId], references: [id])
+}
