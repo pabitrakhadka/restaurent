@@ -90,19 +90,19 @@ model product {
 }
 
 model user {
-  user_id       Int     @id @default(autoincrement())
+  user_id       Int       @id @default(autoincrement())
   user_name     String?
   user_phone    String?
   user_address  String?
-  user_email    String  @unique(map: "User_user_email_key")
+  user_email    String?   @unique(map: "User_user_email_key")
   user_password String?
   location      String?
   user_token    String?
   user_otp      String?
   carts         cart[]
   orders        order[]
-
-  Message Message[]
+  payments      Payment[]
+  Message       Message[]
 }
 
 model SliderImage {
@@ -120,4 +120,13 @@ model Message {
   userid     Int
   user       user     @relation(fields: [userid], references: [user_id])
   admin      admin    @relation(fields: [adminId], references: [id])
+}
+
+model Payment {
+  id       Int      @id @default(autoincrement())
+  userid   Int
+  user     user     @relation(fields: [userid], references: [user_id])
+  medius   String
+  price    String
+  createat DateTime @default(now())
 }

@@ -32,11 +32,11 @@ exports.$Enums = {}
 
 /**
  * Prisma Client JS version: 5.14.0
- * Query Engine version: e9771e62de70f79a5e1c604a2d7c8e2a0a874b48
+ * Query Engine version: 5675a3182f972f1a8f31d16eee6abf4fd54910e3
  */
 Prisma.prismaVersion = {
   client: "5.14.0",
-  engine: "e9771e62de70f79a5e1c604a2d7c8e2a0a874b48"
+  engine: "5675a3182f972f1a8f31d16eee6abf4fd54910e3"
 }
 
 Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
@@ -213,7 +213,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "D:\\Pabitra Khadka\\restaurent-main\\prisma\\generated\\client",
+      "value": "D:\\Pabitra Khadka\\restaurent\\prisma\\generated\\client",
       "fromEnvVar": null
     },
     "config": {
@@ -235,11 +235,12 @@ const config = {
   },
   "relativePath": "../..",
   "clientVersion": "5.14.0",
-  "engineVersion": "e9771e62de70f79a5e1c604a2d7c8e2a0a874b48",
+  "engineVersion": "5675a3182f972f1a8f31d16eee6abf4fd54910e3",
   "datasourceNames": [
     "db"
   ],
   "activeProvider": "mysql",
+  "postinstall": true,
   "inlineDatasources": {
     "db": {
       "url": {
