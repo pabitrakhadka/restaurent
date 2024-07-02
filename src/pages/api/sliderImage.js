@@ -49,11 +49,11 @@ async function handlePostRequest(req, res) {
 async function handleGetRequest(req, res) {
     try {
         const sliderimage = req.query.sliderimage;
-        console.log("slider image=", sliderimage);
+
 
         if (sliderimage === "three") {
             const getImage = await prisma.sliderImage.findMany({
-                take: 3,
+                take: 4,
             });
             if (!getImage || getImage.length === 0) {
                 return res.status(404).json({ message: "No Image Found" });

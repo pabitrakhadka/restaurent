@@ -1,4 +1,4 @@
-import jwt from "jsonwebtoken";
+
 import { decode } from "next-auth/jwt";
 async function isUserLoggedIn(request) {
   const token = request.cookies?.["next-auth.session-token"] || null;

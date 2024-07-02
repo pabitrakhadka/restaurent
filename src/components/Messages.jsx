@@ -20,13 +20,14 @@ const Messages = () => {
     const params = session?.user?.image === 'user' ? `user_id=${session?.user.email}&admin_id=${adminId}` : `user_id=${user_id}&admin_id=${session?.user.email}`;
 
 
+
     const loadData = async () => {
 
         const res = await server.get(`/api/message?${params}`);
         if (res.status === 200) {
+            dispatch(setMessages(res.data.data));
             setLoading(false);
             console.log(res.data.data);
-            dispatch(setMessages(res.data.data));
 
 
         } else {
@@ -34,7 +35,7 @@ const Messages = () => {
         }
     }
     useEffect(() => {
-        // Scroll to the bottom of the message container whenever messages change
+
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [messages]);
     useEffect(() => {

@@ -2,7 +2,7 @@ import prisma from "@/db/db.config.js";
 import { adminLoginSchema } from "./fieldValidate/index.js";
 import { verifyPassword } from "./validate/hash";
 import jwt from "jsonwebtoken";
-import { middleware } from "@/middleware.js";
+
 export default async function handler(req, res) {
   try {
     if (req.method == "POST") {
@@ -68,31 +68,31 @@ export default async function handler(req, res) {
       } else {
       }
     } else if (req.method === "DELETE") {
-      const { authorization } = req.headers;
+      // const { authorization } = req.headers;
 
-      try {
-        const id = await middleware(authorization);
-        if (!id) {
-          console.log("Token is not valid");
-          return res
-            .status(401)
-            .json({ status: "Failed", message: "Unauthorized Admin No Token" });
-        }
+      // try {
+      //   const id = await middleware(authorization);
+      //   if (!id) {
+      //     console.log("Token is not valid");
+      //     return res
+      //       .status(401)
+      //       .json({ status: "Failed", message: "Unauthorized Admin No Token" });
+      //   }
 
-        const deleteToken = await prisma.admin.update({
-          where: {
-            id: id,
-          },
-          data: {
-            token: null,
-          },
-        });
+      //   const deleteToken = await prisma.admin.update({
+      //     where: {
+      //       id: id,
+      //     },
+      //     data: {
+      //       token: null,
+      //     },
+      //   });
 
-        return res.status(200).json({ message: "Logout Success", deleteToken });
-      } catch (error) {
-        console.error("Route handler error:", error.message);
-        return res.status(500).json({ message: "Internal Server Error" });
-      }
+      //   return res.status(200).json({ message: "Logout Success", deleteToken });
+      // } catch (error) {
+      //   console.error("Route handler error:", error.message);
+      //   return res.status(500).json({ message: "Internal Server Error" });
+      // }
     }
   } catch (error) {
     console.log(error);

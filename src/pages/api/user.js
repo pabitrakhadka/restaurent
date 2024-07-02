@@ -1,8 +1,6 @@
 import prisma from "@/db/db.config.js";
 import { userSchema } from "./fieldValidate/index.js";
 import { hashPassword } from "./validate/hash.js";
-import middleware from "./validate/middle";
-
 import isUserLoggedIn from "./validate/userAuth.js";
 import { getServerSession } from "next-auth";
 export default async function handler(req, res) {
@@ -16,7 +14,7 @@ export default async function handler(req, res) {
       const { name, phone, address, email, password, confirm_password } =
         req.body;
 
-      const findUser = await prisma.user.findFirst({
+      const findUser = await prisma.user.findUnique({
         where: {
           user_email: email,
         },
