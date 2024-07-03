@@ -1,5 +1,3 @@
-// Import necessary modules
-import path from 'path';
 
 const nextConfig = {
   images: {
