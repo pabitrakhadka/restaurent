@@ -1,4 +1,3 @@
-
 const nextConfig = {
   images: {
     domains: [
@@ -33,4 +32,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig; // Use 'export default' for ES module syntax
+export default nextConfig;
