@@ -1,3 +1,5 @@
+const path = require('path');
+
 const nextConfig = {
   images: {
     domains: [
@@ -32,4 +34,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
