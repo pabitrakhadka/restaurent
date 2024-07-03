@@ -80,25 +80,7 @@ const menu = ({ products, isproduct }) => {
 
   const router = useRouter();
   const { data: session } = useSession();
-  //   function checkUser(id,name,price) {
-  //   if(session?.user?.name&& session?.user?.image==='user')
-  //   {
-  //     addcart(id,name,price);
-  //   }else{
-  //     toast.error("Please Login!", {
-  //       position: "top-right",
-  //       autoClose: 1000,
-  //       hideProgressBar: true,
-  //       closeOnClick: false,
-  //       pauseOnHover: true,
-  //       draggable: false,
-  //       theme: "colored",
-  //     });
-  //     setTimeout(() => {
-  //       router.push('/login');
-  //     }, 2000)
-  //   }
-  // }
+
   const addcart = async (id) => {
     console.log("product id", id);
     if (session?.user?.image === "user") {

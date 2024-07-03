@@ -1,8 +1,12 @@
 import prisma from "@/db/db.config";
 import { ContactSchema } from "./fieldValidate/index";
+import isWebsite from "./validate/iswebsite";
 export default async function handler(req, res) {
   try {
 
+    const iswebsite = await isWebsite(req);
+
+    if (!iswebsite) return res.status(400).json({ message: "Unauthorized!" });
 
     if (req.method == "POST") {
       const { error, values } = ContactSchema.validate(req.body);

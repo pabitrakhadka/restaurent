@@ -1,16 +1,11 @@
-import { decode } from "next-auth/jwt";
+// Check if the request has cookies || web site request or not
 async function isWebsite(request) {
+    const cookies = request.cookies || null;
 
-    const token = request.cookies?.["next-auth.session-token"] || null;
-    if (!token) return false;
-    try {
-        const user = await decode({
-            token: token,
-            secret: process.env.NEXTAUTH_SECRET,
-        });
+    if (cookies && Object.keys(cookies).length > 0) {
         return true;
-    } catch (e) {
-        return false;
     }
+    return false;
 }
+
 export default isWebsite;

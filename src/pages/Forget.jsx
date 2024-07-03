@@ -35,7 +35,7 @@ const Forget = () => {
             [name]: value
         }));
 
-        // If the value is entered in the current input, focus on the next input
+
         if (value && ref) {
             ref.current.focus();
         }

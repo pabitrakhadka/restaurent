@@ -74,55 +74,13 @@ const About = () => {
           <img src="/photos/back.jpeg" class="overflow-hidden" width={500} height={500} alt="About Our Story" />
         </div>
       </div>
-      {/* <div className="flex justify-center items-center md:w-full flex-col-reverse md:p-3 xl:p-5">
-        <div className="md:p-3  sm:p-5">
-          <h1 className="text-3xl font-bold">About Us</h1>
-          <h1 className="text-3xl font-bold">Making People Happy</h1>
-          <h1 className="text-3xl font-bold">Through Food</h1>
-          <p class="mb-4 mt-0    leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis,
-            libero iste quod quibusdam maxime recusandae odit eveniet,
-            aspernatur culpa provident error molestiae vitae corporis in vero
-            est! Beatae, ipsum voluptatibus.
-          </p>
-          <p data-aos="fade-up" className="mb-4 mt-0">
-            Our menu features a variety of mouthwatering dishes that are sure to
-            satisfy any appetite. From our signature shrimp and grits to our
-            succulent fried chicken, each dish is made with the freshest
-            ingredients sourced from local farms and markets.
-          </p>
-          <p data-aos="fade-up" className="mb-4 mt-0">
-            The ambiance at SC Restaurant is warm and inviting, with cozy booths
-            and a rustic decor that pays homage to the rich history and culture
-            of the region. Whether you're celebrating a special occasion or
-            simply looking for a delicious meal, our attentive and friendly
-            staff will ensure that your dining experience is unforgettable.
-          </p>
-          <p data-aos="fade-up" className="mb-4 mt-0">
-            In addition to our regular menu, we also offer a range of seasonal
-            specials and craft cocktails that are sure to delight your taste
-            buds. So come on in and join us for a taste of true southern
-            hospitality at SC Restaurant."
-          </p>
-        </div>
-        <div>
-          <Image placeholder="blur"
-            quality={100}
-            blurDataURL="blur"
-            width={800}
-            height={800}
 
-            src="https://media.istockphoto.com/id/1307190527/photo/happy-waiter-serving-food-to-group-of-friends-in-a-pub.jpg?s=612x612&w=0&k=20&c=EDqQ0oBcpFGV25p61vWUF5N-6lRJdbmZmQMe5kyuxyA="
-            alt=""
-          />
-        </div>
-      </div> */}
 
 
       <div class="flex flex-col lg:flex-row justify-around items-center">
         <div class="w-full lg:w-1/2">
           <h2 className="p-2 text-3xl font-bold">Contact Us</h2>
-          <form onSubmit={handleSubmit} class=" space-y-4">
+          <form onSubmit={handleSubmit} class=" space-y-4 p-4">
             <div>
               <input
                 type="text"
@@ -180,12 +138,12 @@ const About = () => {
                 <p className="text-red-800 ">{errors.message}</p>
               ) : null}
             </div>
-            <button
+            <div className="text-center"> <button
               type="submit"
-              className="button "
+              className="text-white bg-rose-700 hover:bg-rose-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800 "
             >
               Send
-            </button>
+            </button></div>
           </form>
         </div>
         <div className="mt-4 lg:mt-0">
