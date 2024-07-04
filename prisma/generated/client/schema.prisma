@@ -4,8 +4,9 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider  = "mysql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_DATABASE_URL")
 }
 
 model SuperAdmin {
@@ -64,18 +65,6 @@ model order {
   @@index([menu_id], map: "Order_menu_id_fkey")
   @@index([user_id], map: "Order_user_id_fkey")
 }
-
-// model orderuserdata {
-//   id      Int      @id @default(autoincrement())
-//   user_id Int
-//   name    String
-//   address String
-//   phone   String
-//   email   String
-//   date    DateTime @default(now())
-//   user    user     @relation(fields: [user_id], references: [user_id], map: "OrderUserData_user_id_fkey")
-//   @@index([user_id], map: "OrderUserData_user_id_fkey")
-// }
 
 model product {
   id          Int     @id @default(autoincrement())

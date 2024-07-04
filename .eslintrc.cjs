@@ -1,4 +1,6 @@
 module.exports = {
-    extends: ['next/core-web-vitals'],
-    // Other ESLint rules and settings
+    extends: 'next/core-web-vitals',
+    rules: {
+        // your custom rules here
+    },
 };

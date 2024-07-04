@@ -12,7 +12,7 @@ export default async function handler(req, res) {
             console.log('Query data:', data);
             if (data === "google") {
                 const { name, email } = req.body;
-                console.log('Received name:', name, 'Received email:', email);
+
                 try {
                     let findUser = await prisma.user.findFirst({
                         where: { user_email: email },

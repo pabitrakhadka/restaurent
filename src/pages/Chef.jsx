@@ -3,7 +3,7 @@ import React from 'react'
 import Link from 'next/link';
 const Chef = () => {
 
-    
+
     return (
         <Dlayout>
             <div className="view">

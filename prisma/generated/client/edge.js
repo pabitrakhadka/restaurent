@@ -31,12 +31,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 5.14.0
- * Query Engine version: 5675a3182f972f1a8f31d16eee6abf4fd54910e3
+ * Prisma Client JS version: 5.16.1
+ * Query Engine version: 34ace0eb2704183d2c05b60b52fba5c43c13f303
  */
 Prisma.prismaVersion = {
-  client: "5.14.0",
-  engine: "5675a3182f972f1a8f31d16eee6abf4fd54910e3"
+  client: "5.16.1",
+  engine: "34ace0eb2704183d2c05b60b52fba5c43c13f303"
 }
 
 Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
@@ -226,6 +226,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
+    "sourceFilePath": "D:\\Pabitra Khadka\\restaurent\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -233,13 +234,13 @@ const config = {
     "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../..",
-  "clientVersion": "5.14.0",
-  "engineVersion": "5675a3182f972f1a8f31d16eee6abf4fd54910e3",
+  "clientVersion": "5.16.1",
+  "engineVersion": "34ace0eb2704183d2c05b60b52fba5c43c13f303",
   "datasourceNames": [
     "db"
   ],
   "activeProvider": "mysql",
-  "postinstall": true,
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -248,8 +249,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"./generated/client\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel SuperAdmin {\n  id         Int      @id @default(autoincrement())\n  name       String\n  email      String   @unique\n  password   String\n  created_at DateTime @default(now())\n  image      String?\n}\n\nmodel admin {\n  id         Int       @id @default(autoincrement())\n  name       String\n  email      String    @unique(map: \"Admin_email_key\")\n  phone      String\n  password   String\n  created_at DateTime  @default(now())\n  token      String?\n  image      String?\n  messages   Message[]\n}\n\nmodel cart {\n  id       Int     @id @default(autoincrement())\n  user_id  Int\n  p_id     Int\n  quantity Int     @default(1)\n  product  product @relation(fields: [p_id], references: [id], map: \"Cart_p_id_fkey\")\n  user     user    @relation(fields: [user_id], references: [user_id], map: \"Cart_user_id_fkey\")\n\n  @@index([p_id], map: \"Cart_p_id_fkey\")\n  @@index([user_id], map: \"Cart_user_id_fkey\")\n}\n\nmodel contact {\n  id      Int    @id @default(autoincrement())\n  name    String\n  email   String\n  subject String\n  message String\n}\n\nmodel order {\n  id        Int      @id @default(autoincrement())\n  menu_id   Int\n  user_id   Int\n  price     String\n  quantity  String\n  status    String\n  token_num String\n  date      DateTime @default(now())\n  product   product  @relation(fields: [menu_id], references: [id], map: \"Order_menu_id_fkey\")\n  user      user     @relation(fields: [user_id], references: [user_id], map: \"Order_user_id_fkey\")\n\n  @@index([menu_id], map: \"Order_menu_id_fkey\")\n  @@index([user_id], map: \"Order_user_id_fkey\")\n}\n\n// model orderuserdata {\n//   id      Int      @id @default(autoincrement())\n//   user_id Int\n//   name    String\n//   address String\n//   phone   String\n//   email   String\n//   date    DateTime @default(now())\n//   user    user     @relation(fields: [user_id], references: [user_id], map: \"OrderUserData_user_id_fkey\")\n//   @@index([user_id], map: \"OrderUserData_user_id_fkey\")\n// }\n\nmodel product {\n  id          Int     @id @default(autoincrement())\n  name        String\n  price       Int\n  description String\n  image       String\n  category    String\n  special     String\n  cart        cart[]\n  order       order[]\n}\n\nmodel user {\n  user_id       Int       @id @default(autoincrement())\n  user_name     String?\n  user_phone    String?\n  user_address  String?\n  user_email    String?   @unique(map: \"User_user_email_key\")\n  user_password String?\n  location      String?\n  user_token    String?\n  user_otp      String?\n  carts         cart[]\n  orders        order[]\n  payments      Payment[]\n  Message       Message[]\n}\n\nmodel SliderImage {\n  id    Int    @id @default(autoincrement())\n  image String\n}\n\nmodel Message {\n  id         Int      @id @default(autoincrement())\n  message    String\n  senderId   Int\n  receiverId Int\n  createdAt  DateTime @default(now())\n  adminId    Int\n  userid     Int\n  user       user     @relation(fields: [userid], references: [user_id])\n  admin      admin    @relation(fields: [adminId], references: [id])\n}\n\nmodel Payment {\n  id       Int      @id @default(autoincrement())\n  userid   Int\n  user     user     @relation(fields: [userid], references: [user_id])\n  medius   String\n  price    String\n  createat DateTime @default(now())\n}\n",
-  "inlineSchemaHash": "fed41d0b73e32028fd7c7a151b82190598480a5fd29b0edd2b6fe8d55389844f",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"./generated/client\"\n}\n\ndatasource db {\n  provider  = \"mysql\"\n  url       = env(\"DATABASE_URL\")\n  directUrl = env(\"DIRECT_DATABASE_URL\")\n}\n\nmodel SuperAdmin {\n  id         Int      @id @default(autoincrement())\n  name       String\n  email      String   @unique\n  password   String\n  created_at DateTime @default(now())\n  image      String?\n}\n\nmodel admin {\n  id         Int       @id @default(autoincrement())\n  name       String\n  email      String    @unique(map: \"Admin_email_key\")\n  phone      String\n  password   String\n  created_at DateTime  @default(now())\n  token      String?\n  image      String?\n  messages   Message[]\n}\n\nmodel cart {\n  id       Int     @id @default(autoincrement())\n  user_id  Int\n  p_id     Int\n  quantity Int     @default(1)\n  product  product @relation(fields: [p_id], references: [id], map: \"Cart_p_id_fkey\")\n  user     user    @relation(fields: [user_id], references: [user_id], map: \"Cart_user_id_fkey\")\n\n  @@index([p_id], map: \"Cart_p_id_fkey\")\n  @@index([user_id], map: \"Cart_user_id_fkey\")\n}\n\nmodel contact {\n  id      Int    @id @default(autoincrement())\n  name    String\n  email   String\n  subject String\n  message String\n}\n\nmodel order {\n  id        Int      @id @default(autoincrement())\n  menu_id   Int\n  user_id   Int\n  price     String\n  quantity  String\n  status    String\n  token_num String\n  date      DateTime @default(now())\n  product   product  @relation(fields: [menu_id], references: [id], map: \"Order_menu_id_fkey\")\n  user      user     @relation(fields: [user_id], references: [user_id], map: \"Order_user_id_fkey\")\n\n  @@index([menu_id], map: \"Order_menu_id_fkey\")\n  @@index([user_id], map: \"Order_user_id_fkey\")\n}\n\nmodel product {\n  id          Int     @id @default(autoincrement())\n  name        String\n  price       Int\n  description String\n  image       String\n  category    String\n  special     String\n  cart        cart[]\n  order       order[]\n}\n\nmodel user {\n  user_id       Int       @id @default(autoincrement())\n  user_name     String?\n  user_phone    String?\n  user_address  String?\n  user_email    String?   @unique(map: \"User_user_email_key\")\n  user_password String?\n  location      String?\n  user_token    String?\n  user_otp      String?\n  carts         cart[]\n  orders        order[]\n  payments      Payment[]\n  Message       Message[]\n}\n\nmodel SliderImage {\n  id    Int    @id @default(autoincrement())\n  image String\n}\n\nmodel Message {\n  id         Int      @id @default(autoincrement())\n  message    String\n  senderId   Int\n  receiverId Int\n  createdAt  DateTime @default(now())\n  adminId    Int\n  userid     Int\n  user       user     @relation(fields: [userid], references: [user_id])\n  admin      admin    @relation(fields: [adminId], references: [id])\n}\n\nmodel Payment {\n  id       Int      @id @default(autoincrement())\n  userid   Int\n  user     user     @relation(fields: [userid], references: [user_id])\n  medius   String\n  price    String\n  createat DateTime @default(now())\n}\n",
+  "inlineSchemaHash": "83951a910dd2edafc1e9ce2a95edb5d0bc72886bc9b6c3c84517aa1f6378a785",
   "copyEngine": true
 }
 config.dirname = '/'

@@ -71,7 +71,7 @@ const About = () => {
           </div>
         </div>
         <div class="w-full md:w-auto md:ml-5">
-          <img src="/photos/back.jpeg" class="overflow-hidden" width={500} height={500} alt="About Our Story" />
+          <Image src="/photos/back.jpeg" class="overflow-hidden" width={500} height={500} alt="About Our Story" />
         </div>
       </div>
 
