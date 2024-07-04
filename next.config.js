@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 const nextConfig = {
   reactStrictMode: true,
   serverRuntimeConfig: {
@@ -34,13 +34,8 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
-=======
-// @ts-check
- 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  /* config options here */
-}
- 
-module.exports = nextConfig
->>>>>>> 315e20d28c3b6b5e3112d743cf267e4f95d88b12
+
+
+
+
+
