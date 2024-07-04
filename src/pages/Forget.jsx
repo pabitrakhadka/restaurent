@@ -2,9 +2,9 @@ import Layout from "@/components/Layout";
 import { forgotSchema } from "@/schemas";
 import { useFormik } from "formik";
 import { useRouter } from "next/router";
-import React, { useState, useRef } from 'react';
-
-
+import React, { useState, useRef, useEffect } from 'react';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import server from "@/axois/server";
 import Uispinner from "@/components/Uispinner";
 
@@ -22,138 +22,138 @@ const Forget = () => {
     const [emails, setUpdateEmail] = useState('');
     const [otp, setOTP] = useState({ one: '', two: '', three: '', four: '' });
     const [error, setError] = useState({});
-    //     const inputTwoRef = useRef(null);
-    //     const inputThreeRef = useRef(null);
-    //     const inputFourRef = useRef(null);
+    const inputTwoRef = useRef(null);
+    const inputThreeRef = useRef(null);
+    const inputFourRef = useRef(null);
 
-    //     const handleChanges = (e, ref) => {
-    //         const { name, value } = e.target;
-    //         setOTP(prevOTP => ({
-    //             ...prevOTP,
-    //             [name]: value
-    //         }));
+    const handleChanges = (e, ref) => {
+        const { name, value } = e.target;
+        setOTP(prevOTP => ({
+            ...prevOTP,
+            [name]: value
+        }));
 
-    //         if (value && ref) {
-    //             ref.current.focus();
-    //         }
-    //     };
+        if (value && ref) {
+            ref.current.focus();
+        }
+    };
 
-    //     const submitEmail = async (e) => {
-    //         if (email.length < 3) {
-    //             setEmailerror("Email is required");
-    //         } else {
-    //             console.log("submit email", email);
-    //             e.preventDefault();
-    //             try {
-    //                 const res = await server.get(`/api/userlogin?email=${email}`);
-    //                 console.log(res.data);
-    //                 if (res.status === 200) {
-    //                     setLoading(true);
-    //                     setUpdateEmail(email);
-    //                     toast.success(`${res.data.message}`, {
-    //                         position: "top-right",
-    //                         autoClose: 1000,
-    //                         hideProgressBar: true,
-    //                         closeOnClick: false,
-    //                         pauseOnHover: false,
-    //                         draggable: false,
-    //                         theme: "colored",
-    //                     });
-    //                     setTimeout(() => {
-    //                         setCurrentform("enterpin");
-    //                     }, 1000);
-    //                 } else {
-    //                     toast.error(`${res.data.message}`, {
-    //                         position: "top-right",
-    //                         autoClose: 1000,
-    //                         hideProgressBar: true,
-    //                         closeOnClick: false,
-    //                         pauseOnHover: false,
-    //                         draggable: false,
-    //                         theme: "colored",
-    //                     });
-    //                 }
-    //             } catch (error) {
-    //                 console.log("Catch ", error);
-    //             }
-    //         }
-    //     };
+    const submitEmail = async (e) => {
+        if (email.length < 3) {
+            setEmailerror("Email is required");
+        } else {
+            console.log("submit email", email);
+            e.preventDefault();
+            try {
+                const res = await server.get(`/api/userlogin?email=${email}`);
+                console.log(res.data);
+                if (res.status === 200) {
+                    setLoading(true);
+                    setUpdateEmail(email);
+                    toast.success(`${res.data.message}`, {
+                        position: "top-right",
+                        autoClose: 1000,
+                        hideProgressBar: true,
+                        closeOnClick: false,
+                        pauseOnHover: false,
+                        draggable: false,
+                        theme: "colored",
+                    });
+                    setTimeout(() => {
+                        setCurrentform("enterpin");
+                    }, 1000);
+                } else {
+                    toast.error(`${res.data.message}`, {
+                        position: "top-right",
+                        autoClose: 1000,
+                        hideProgressBar: true,
+                        closeOnClick: false,
+                        pauseOnHover: false,
+                        draggable: false,
+                        theme: "colored",
+                    });
+                }
+            } catch (error) {
+                console.log("Catch ", error);
+            }
+        }
+    };
 
-    //     const toastOptions = {
-    //         position: "top-right",
-    //         autoClose: 1000,
-    //         hideProgressBar: true,
-    //         closeOnClick: false,
-    //         pauseOnHover: false,
-    //         draggable: false,
-    //         theme: "colored",
-    //     };
+    const toastOptions = {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: false,
+        theme: "colored",
+    };
 
-    //     const handleEmail = (e) => {
-    //         const value = e.target.value;
-    //         setEmail(value);
-    //     };
+    const handleEmail = (e) => {
+        const value = e.target.value;
+        setEmail(value);
+    };
 
-    //     const pinSubmit = async (e) => {
-    //         e.preventDefault();
-    //         const newErrors = {};
-    //         for (const key in otp) {
-    //             if (!otp[key]) {
-    //                 toast.error("Please enter a value", toastOptions);
-    //             } else if (otp[key].length !== 1 || isNaN(otp[key])) {
-    //                 newErrors[key] = 'Please enter a single digit';
-    //                 toast.error("Please enter a single digit", toastOptions);
-    //             }
-    //         }
-    //         if (Object.keys(newErrors).length === 0) {
-    //             try {
-    //                 let pin = `${otp.one}${otp.two}${otp.three}${otp.four}`;
-    //                 const response = await server.post(`/api/userlogin?em=${email}&pin=${pin}`);
-    //                 if (response.status === 200) {
-    //                     setUpdateEmail(email);
-    //                     toast.success(response.data.message, toastOptions);
-    //                     setTimeout(() => setCurrentform("changepassword"), 1000);
-    //                 } else {
-    //                     toast.error(response.data.message, toastOptions);
-    //                     setTimeout(() => setCurrentform("enterpin"), 1000);
-    //                     console.log("error");
-    //                 }
-    //                 setError({});
-    //             } catch (error) {
-    //                 console.log("Pin submit error: ", error);
-    //                 toast.error("Error Pin !");
-    //             }
-    //         } else {
-    //             setError(newErrors);
-    //         }
-    //     };
+    const pinSubmit = async (e) => {
+        e.preventDefault();
+        const newErrors = {};
+        for (const key in otp) {
+            if (!otp[key]) {
+                toast.error("Please enter a value", toastOptions);
+            } else if (otp[key].length !== 1 || isNaN(otp[key])) {
+                newErrors[key] = 'Please enter a single digit';
+                toast.error("Please enter a single digit", toastOptions);
+            }
+        }
+        if (Object.keys(newErrors).length === 0) {
+            try {
+                let pin = `${otp.one}${otp.two}${otp.three}${otp.four}`;
+                const response = await server.post(`/api/userlogin?em=${email}&pin=${pin}`);
+                if (response.status === 200) {
+                    setUpdateEmail(email);
+                    toast.success(response.data.message, toastOptions);
+                    setTimeout(() => setCurrentform("changepassword"), 1000);
+                } else {
+                    toast.error(response.data.message, toastOptions);
+                    setTimeout(() => setCurrentform("enterpin"), 1000);
+                    console.log("error");
+                }
+                setError({});
+            } catch (error) {
+                console.log("Pin submit error: ", error);
+                toast.error("Error Pin !");
+            }
+        } else {
+            setError(newErrors);
+        }
+    };
 
-    //     const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
-    //         useFormik({
-    //             initialValues: initialValues,
-    //             validationSchema: forgotSchema,
-    //             onSubmit: async (values) => {
-    //                 console.log(values);
-    //                 values.emails = emails;
-    //                 try {
-    //                     const res = await server.put(
-    //                         "/api/userlogin?changepassword=c",
-    //                         values
-    //                     );
-    //                     if (res.status === 200) {
-    //                         toast.success(`${res.data.message}`, toastOptions);
-    //                         setTimeout(() => {
-    //                             router.push('/login');
-    //                         }, 1000);
-    //                     } else {
-    //                         toast.error(`${res.data.message}`, toastOptions);
-    //                     }
-    //                 } catch (error) {
-    //                     console.log("Password change error: ", error);
-    //                     toast.error("Error changing password", toastOptions);
-    //                 }
-    //             },
-    //         });
+    const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+        useFormik({
+            initialValues: initialValues,
+            validationSchema: forgotSchema,
+            onSubmit: async (values) => {
+                console.log(values);
+                values.emails = emails;
+                try {
+                    const res = await server.put(
+                        "/api/userlogin?changepassword=c",
+                        values
+                    );
+                    if (res.status === 200) {
+                        toast.success(`${res.data.message}`, toastOptions);
+                        setTimeout(() => {
+                            router.push('/login');
+                        }, 1000);
+                    } else {
+                        toast.error(`${res.data.message}`, toastOptions);
+                    }
+                } catch (error) {
+                    console.log("Password change error: ", error);
+                    toast.error("Error changing password", toastOptions);
+                }
+            },
+        });
 
     const renderdiv = () => {
         switch (currentform) {
@@ -304,4 +304,3 @@ const Forget = () => {
 };
 
 export default Forget;
-

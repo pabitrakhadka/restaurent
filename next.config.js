@@ -1,4 +1,3 @@
-
 const nextConfig = {
   reactStrictMode: true,
   serverRuntimeConfig: {
@@ -34,8 +33,3 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
-
-
-
-
-
