@@ -15,10 +15,10 @@ app.prepare().then(async () => {
     const io = socketIO(httpServer);
 
     io.on('connection', (socket) => {
-        console.log('Client connected');
+
 
         socket.on('message1', (data) => {
-            console.log('Recieved from API ::', data)
+
             io.emit('message2', data);
         })
     });
@@ -29,6 +29,6 @@ app.prepare().then(async () => {
 
     const PORT = process.env.PORT || 3000;
     httpServer.listen(PORT, () => {
-        console.log(`Server is running on http://localhost:${PORT}`);
+
     });
 });

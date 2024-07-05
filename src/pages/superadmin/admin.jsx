@@ -1,42 +1,41 @@
 import server from '@/axois/server';
-import SuperLayout from '@/components/SuperLayout'
+import SuperLayout from '@/components/SuperLayout';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-
-const admin = () => {
+const Admin = () => {
     const router = useRouter();
     const [admin, setAdmin] = useState([]);
-    const [loading, setloading] = useState(true);
+    const [loading, setLoading] = useState(true);
+
     const load = async () => {
         try {
-
-            const res = await server.get("/api/admin");
+            const res = await server.get('/api/admin');
             console.log(res.data);
             setAdmin(res.data.data);
             console.log(res.data);
 
-            setloading(false);
+            setLoading(false);
         } catch (error) {
             console.log(error);
         }
     };
 
+
     useEffect(() => {
         load();
     }, []);
 
-    const editAdmin = (id) => {
 
+    const editAdmin = (id) => {
         router.push(`/superadmin/addAdmin?id=${id}`);
     };
 
+    // Function to handle deleting admin
     const deleteAdmin = async (id, index) => {
-
         try {
-            if (confirm("Do You Want to Delete !")) {
-
+            if (confirm('Do You Want to Delete!')) {
                 const res = await server.delete(`/api/superadmin/superadmin?id=${id}`);
                 if (res && res.data.status === 200) {
                     console.log(res.data.message);
@@ -47,10 +46,6 @@ const admin = () => {
                     toast.error(`${res.data.message}`);
                 }
             }
-
-
-
-
         } catch (error) {
             console.log(error);
         }
@@ -59,24 +54,25 @@ const admin = () => {
     return (
         <SuperLayout>
             <div>
-
                 <div>
-
-                    <Link className=" bg-rose-500 text-white px-3 py-3 rounded-full" href={"/superadmin/addAdmin"} >Add Admin</Link>
+                    <Link className="bg-rose-500 text-white px-3 py-3 rounded-full" href="/superadmin/addAdmin">
+                        Add Admin
+                    </Link>
                     <div className="">
-                        <h1 className='mt-2'>Manage Admin</h1>
+                        <h1 className="mt-2">Manage Admin</h1>
                         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-
-                                <th scope="col">S.N</th>
-                                <th scope="col" class="px-6 py-3">Name</th>
-                                <th scope="col" class="px-6 py-3">Email</th>
-                                <th scope="col" class="px-6 py-3">Phone</th>
-                                <th scope="col" class="px-6 py-3">Password</th>
-                                <th colSpan={2} scope="col" class="px-6 py-3">
-                                    Action
-                                </th>
-                            </tr>
+                            <thead>
+                                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="col">S.N</th>
+                                    <th scope="col" className="px-6 py-3">Name</th>
+                                    <th scope="col" className="px-6 py-3">Email</th>
+                                    <th scope="col" className="px-6 py-3">Phone</th>
+                                    <th scope="col" className="px-6 py-3">Password</th>
+                                    <th colSpan={2} scope="col" className="px-6 py-3">
+                                        Action
+                                    </th>
+                                </tr>
+                            </thead>
                             <tbody>
                                 {admin && admin.map((adminData, index) => (
                                     <tr key={index}>
@@ -86,7 +82,8 @@ const admin = () => {
                                         <td className="px-6 py-4">{adminData.phone}</td>
                                         <td className="px-6 py-4">**********</td>
                                         <td className="px-6 py-4">
-                                            <button className=" bg-rose-500 text-white px-5 py-3 rounded-full"
+                                            <button
+                                                className="bg-rose-500 text-white px-5 py-3 rounded-full"
                                                 onClick={() => {
                                                     editAdmin(adminData.id);
                                                 }}
@@ -95,7 +92,8 @@ const admin = () => {
                                             </button>
                                         </td>
                                         <td>
-                                            <button className=" bg-rose-500 text-white px-5 py-3 rounded-full"
+                                            <button
+                                                className="bg-rose-500 text-white px-5 py-3 rounded-full"
                                                 onClick={() => {
                                                     deleteAdmin(adminData.id, index);
                                                 }}
@@ -111,7 +109,7 @@ const admin = () => {
                 </div>
             </div>
         </SuperLayout>
-    )
-}
+    );
+};
 
-export default admin
+export default Admin;
