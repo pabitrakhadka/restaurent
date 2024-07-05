@@ -213,7 +213,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "D:\\Pabitra Khadka\\restaurent\\prisma\\generated\\client",
+      "value": "G:\\restaurent\\prisma\\generated\\client",
       "fromEnvVar": null
     },
     "config": {
@@ -227,12 +227,11 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "D:\\Pabitra Khadka\\restaurent\\prisma\\schema.prisma",
+    "sourceFilePath": "G:\\restaurent\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
-    "schemaEnvPath": "../../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "../..",
   "clientVersion": "5.16.1",
