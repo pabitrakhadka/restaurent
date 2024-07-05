@@ -18,7 +18,7 @@ const initialValues = {
   confirm_password: ""
 }
 
-const register = () => {
+const Register = () => {
   const router = useRouter();
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
@@ -160,4 +160,4 @@ const register = () => {
   );
 };
 
-export default register;
+export default Register;

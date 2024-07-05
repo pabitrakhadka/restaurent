@@ -5,7 +5,7 @@ import { useSession } from 'next-auth/react'
 import React, { useEffect, useState } from 'react'
 import NotLogin from '@/components/NotLogin'
 import server from '@/axois/server'
-const index = () => {
+const Index = () => {
   useEffect(() => {
     if (status == "authenticated") {
       console.log("user authenticateion");
@@ -80,4 +80,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index

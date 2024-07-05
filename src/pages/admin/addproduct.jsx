@@ -6,12 +6,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 
-const addproduct = () => {
+const Addproduct = () => {
   const router = useRouter();
   const { id } = router.query || null;
   const [image, setImage] = useState("");
   const [showimage, setShowImage] = useState("");
-
   const [productName, setProductName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
@@ -19,9 +18,7 @@ const addproduct = () => {
   const [special, setSpecial] = useState(false);
 
 
-  useEffect(() => {
-    const data = router.query.data || '';
-  })
+
   useEffect(() => {
     if (id) {
       const fetchData = async () => {
@@ -97,9 +94,9 @@ const addproduct = () => {
           theme: "colored",
         });
       }
-      console.log(res.data);
+
     } catch (err) {
-      console.log(err.message);
+
       alert("server Error");
     }
   };
@@ -260,109 +257,10 @@ const addproduct = () => {
           </div>
         </form>
       </div>
-      {/* <div className="addproducts">
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <input
-              className="fshadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline"
-              type="file"
-              id="image"
-              name="image"
-              onChange={(e) => setImage(e.target.files[0])}
-            />
-          </div>
-          <div className="form-floating mb-3">
-            <input
-              type="text"
-              className="form-control"
-              id="floatingInput"
-              placeholder="productName"
-              name="productName"
-              value={productName}
-              onChange={(e) => setProductName(e.target.value)}
-              required
-            />
-            <label htmlFor="floatingInput "> Product Name</label>
-          </div>
 
-          <div className="form-floating mb-3">
-            <input
-              type="text"
-              className="form-control"
-              id="price"
-              placeholder="price"
-              name="price"
-              value={price}
-              onChange={(e) => setPrice(e.target.value)}
-              required
-            />
-            <label htmlFor="floatingPassword">Price Rs,</label>
-          </div>
-          <div className="form-floating mb-3">
-            <input
-              type="text"
-              className="form-control"
-              id="des"
-              name="description"
-              placeholder="productName"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              required
-            />
-            <label htmlFor="floatingInput">Description</label>
-          </div>
-          <div className="form-floating mb-3">
-            <select
-              name="category"
-              className="form-select"
-              aria-label="Default select example"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-            >
-              <option value={""}>Select Category</option>
-              <option value="momo">Momo</option>
-              <option value="pizza">Pizza</option>
-              <option value="shorma">Shorma</option>
-              <option value="burger">Burger</option>
-              <option value="shorma">Shorma</option>
-
-            </select>
-          </div>
-          {id ? (
-            <div></div>
-          ) : (
-            <div className="form-check my-3">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                checked={special}
-                onChange={(e) => setSpecial(e.target.checked)}
-                id="flexCheckDefault"
-              />
-              <label className="form-check-label " htmlFor="flexCheckDefault">
-                Special Menu
-              </label>
-            </div>
-          )}
-
-          <div className="text-center m-2 text-white">
-            {
-              id ? (
-                <button className="btn bg-primary" type="submit">
-                  Update Product
-                </button>
-              ) : (<button className="btn bg-primary" type="submit">
-                Add Product
-              </button>)
-            }
-
-
-          </div>
-        </form>
-      </div > */}
 
     </Dlayout >
   );
 };
 
-export default addproduct;
+export default Addproduct;

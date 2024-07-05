@@ -11,7 +11,7 @@ import Spinner from "@/components/Spinner";
 import Tost from "@/components/Tost";
 
 
-const product = () => {
+const Product = () => {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const [data, setData] = useState([]);
@@ -158,4 +158,4 @@ const product = () => {
   );
 };
 
-export default product;
+export default Product;

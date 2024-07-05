@@ -1,5 +1,4 @@
 import server from "@/axois/server";
-import Dlayout from "@/components/Dlayout";
 import Spinner from "@/components/Spinner";
 import SuperLayout from "@/components/SuperLayout";
 import Tost from "@/components/Tost";

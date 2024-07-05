@@ -1,9 +1,9 @@
 import React from "react";
 import axios from "axios";
 import crypto from 'crypto';
- 
 
-const esewa = () => {
+
+const Esewa = () => {
   const esewaPayment = async () => {
     // const data = {
     //   amount: 100,
@@ -24,7 +24,7 @@ const esewa = () => {
     //   console.log("error");
     // }
 
-    
+
     const generateSignature = (message) => {
       const sicret = "8gBm/:&EnhH.1/q";
       const hmac = crypto.createHmac("sha256", sicret);
@@ -47,14 +47,14 @@ const esewa = () => {
       total_amount: "110",
       transaction_uuid: "ab14a8f2b02c3"
     };
-    
+
     console.log(formData);
     try {
       // Using a CORS proxy service
 
       const apiUrl = 'https://rc-epay.esewa.com.np/api/epay/main/v2/form';
-      const res = await axios.post(apiUrl,JSON.stringify(formData)
-        
+      const res = await axios.post(apiUrl, JSON.stringify(formData)
+
 
       );
       if (res.status === 200) {
@@ -86,4 +86,4 @@ const esewa = () => {
   );
 };
 
-export default esewa;
+export default Esewa;

@@ -1,10 +1,8 @@
 import Layout from "@/components/Layout";
 import server from "@/axois/server";
 import React, { useEffect, useState } from "react";
-
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
-import NotLogin from "../components/NotLogin";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { toast } from "react-toastify";
@@ -13,24 +11,18 @@ import Image from "next/image";
 import Spinner from "@/components/Spinner";
 import { useDispatch } from "react-redux";
 import { increment } from "@/store/slice/cartCounter";
-import axios from "axios";
 import { upperCase } from "@/components/CapitalFun";
 
-
-
-const menu = ({ products, isproduct }) => {
+const Menu = ({ products, isproduct }) => {
   const dispatch = useDispatch();
-  // const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const numberPagination = ['1', '2', '3', '4', '5'];
 
   const changePage = async (num) => {
-    console.log(num);
+
     setPage(num);
     try {
       const res = await server.get(`api/product?${page}`);
-
-
     } catch (error) {
 
     }
@@ -466,19 +458,18 @@ const menu = ({ products, isproduct }) => {
 };
 export async function getServerSideProps() {
   try {
-    // Fetch data from external API
-    const response = await axios.get('http://localhost:3000/api/product');
+
+    const response = await server.get(`${process.env.AUTH_URL}/product`);
     const products = response.data;
-
-
     return {
       props: { products, isproduct: true }
     };
   } catch (error) {
     console.error("Error fetching data:", error);
     return {
-      props: { products: [] } // Return an empty array or handle the error as appropriate
+      props: { products: [], isproduct: false }
     };
   }
 }
-export default menu;
+
+export default Menu;

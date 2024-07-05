@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
 
-const admin = () => {
+const Admin = () => {
     const router = useRouter();
     const [admin, setAdmin] = useState([]);
     const [loading, setloading] = useState(true);
@@ -114,4 +114,4 @@ const admin = () => {
     )
 }
 
-export default admin
+export default Admin

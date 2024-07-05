@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { signIn, useSession } from "next-auth/react";
 import Tost from "@/components/Tost";
 
-const admin = () => {
+const Admin = () => {
   const { data: session, status } = useSession();
   const [admin, setAdmin] = useState({
     email: "",
@@ -121,4 +121,4 @@ const admin = () => {
   );
 };
 
-export default admin;
+export default Admin;

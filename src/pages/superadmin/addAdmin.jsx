@@ -11,7 +11,7 @@ import axios from "axios";
 
 
 
-const addAdmin = () => {
+const Addadmin = () => {
   const router = useRouter();
   const { query } = useRouter();
   const id = query.id;
@@ -154,4 +154,4 @@ const addAdmin = () => {
     </>
   );
 };
-export default addAdmin;
+export default Addadmin;

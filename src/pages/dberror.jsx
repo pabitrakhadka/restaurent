@@ -1,9 +1,9 @@
 import React from 'react'
 
-const dberror = () => {
+const Dberror = () => {
     return (
         <div>dberror</div>
     )
 }
 
-export default dberror
+export default Dberror

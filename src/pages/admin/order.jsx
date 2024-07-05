@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Spinner from "@/components/Spinner";
-const order = () => {
+const Order = () => {
   const [loading, setLoading] = useState(true);
   const [order, setOrder] = useState();
   const loadData = async () => {
@@ -71,4 +71,4 @@ const order = () => {
   );
 };
 
-export default order;
+export default Order;

@@ -2,7 +2,7 @@ import Dlayout from "@/components/Dlayout";
 import React, { use, useEffect, useState } from "react";
 import Link from "next/link";
 import axios from "axios";
-const specialMenu = () => {
+const SpecialMenu = () => {
   const [del, setDel] = useState(false);
   const deleteProduct = async (id, index) => {
     try {
@@ -102,4 +102,4 @@ const specialMenu = () => {
   );
 };
 
-export default specialMenu;
+export default SpecialMenu;

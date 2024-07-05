@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import server from '@/axois/server';
 import Spinner from '@/components/Spinner';
 
-const slider = () => {
+const Slider = () => {
     const [loading, setLoading] = useState(true);
     const [loadimage, setloadImage] = useState([]);
     const loadImage = async () => {
@@ -118,4 +118,4 @@ const slider = () => {
     )
 }
 
-export default slider
+export default Slider;

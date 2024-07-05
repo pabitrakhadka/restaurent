@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 
 
 
-const users = () => {
+const Users = () => {
 
   const [data, setData] = useState([]);
 
@@ -67,4 +67,4 @@ const users = () => {
   );
 };
 
-export default users;
+export default Users;

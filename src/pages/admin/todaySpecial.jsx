@@ -4,7 +4,7 @@ import Router, { useRouter } from 'next/router'
 
 
 
-const todaySpecial = () => {
+const TodaySpecial = () => {
     const router = useRouter();
     const productData = 'special_Product';
     const addProductSpecial = () => {
@@ -21,4 +21,4 @@ const todaySpecial = () => {
     )
 }
 
-export default todaySpecial
+export default TodaySpecial
