@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
 import Spinner from "@/components/Spinner";
 import Tost from "@/components/Tost";
-const contact_details = () => {
+const ContactDetails = () => {
   const [loading, setLoading] = useState(true);
 
   //delete contact 
@@ -89,4 +89,4 @@ const contact_details = () => {
   );
 };
 
-export default contact_details;
+export default ContactDetails;

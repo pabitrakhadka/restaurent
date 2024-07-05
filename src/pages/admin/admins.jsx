@@ -9,7 +9,7 @@ import server from "@/axois/server";
 import Spinner from "@/components/Spinner";
 import Tost from "@/components/Tost";
 
-const admins = () => {
+const Admin = () => {
   const [loading, setLoading] = useState(true);
   const { data: session } = useSession();
   const [admin, setAdmin] = useState([]);
@@ -92,85 +92,18 @@ const admins = () => {
                       <td className="px-6 py-4">{adminData.name}</td>
                       <td className="px-6 py-4">{adminData.email}</td>
                       <td className="px-6 py-4">{adminData.phone}</td>
-                      {/* <td className="px-6 py-4">**********</td> */}
-                      {/* <td className="px-6 py-4">
-                        <button className=" bg-rose-500 text-white px-5 py-3 rounded-full"
-                          onClick={() => {
-                            editAdmin(adminData.id);
-                          }}
-                        >
-                          Edit
-                        </button>
-                      </td>
-                      <td>
-                        <button className=" bg-rose-500 text-white px-5 py-3 rounded-full"
-                          onClick={() => {
-                            deleteAdmin(adminData.id, index);
-                          }}
-                        >
-                          Delete
-                        </button>
-                      </td> */}
+
+
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
           </div>
-          {/* <h1>Manage Admin</h1>
-      <div className="fixedposition">
-        <button className="addproduct">
-          <Link className="addproducts" href="/addAdmin">
-            Add Admin
-          </Link>
-        </button>
-      </div>
-      <table className="my-5 table">
-        <thead>
-          <tr>
-            <th scope="col">S.N</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Password</th>
-            <th colSpan={2} scope="col">
-              Action
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-        {admin.map((adminData, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
-              <td>{adminData.name}</td>
-              <td>{adminData.email}</td>
-              <td>{adminData.phone}</td>
-              <td>**********</td>
-              <td>
-                <button
-                  onClick={() => {
-                    editAdmin(adminData.id);
-                  }}
-                >
-                  Edit
-                </button>
-              </td>
-              <td>
-                <button
-                  onClick={() => {
-                    deleteAdmin(adminData.id, index);
-                  }}
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table> */}
+
         </>}
     </Dlayout>
   );
 };
 
-export default admins;
+export default Admin;

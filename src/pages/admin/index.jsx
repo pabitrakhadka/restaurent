@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useSession } from "next-auth/react";
 import server from "@/axois/server";
 import Spinner from "@/components/Spinner";
-const dashboard = () => {
+const Dashboard = () => {
   const [data, setData] = useState({});
   const { data: session, status } = useSession();
   const [order, setOrder] = useState([]);
@@ -188,4 +188,4 @@ const dashboard = () => {
   );
 };
 
-export default dashboard;
+export default Dashboard;
